@@ -1,0 +1,28 @@
+table.table
+	thead
+		th : a href="#{_url('/admin/info_box', :order => 'ibid')}" = L[:ibid]
+		th : a href="#{_url('/admin/info_box', :order => 'box_number')}" = L[:box_number]
+		th : a href="#{_url('/admin/info_box', :order => 'name')}" = L[:name]
+		th : a href="#{_url('/admin/info_box', :order => 'description')}" = L[:description]
+		th : a href="#{_url('/admin/info_box', :order => 'picture')}" = L[:picture]
+		th : a href="#{_url('/admin/info_box', :order => 'link')}" = L[:link]
+		th
+	tbody
+		- @info_box.each do | row |
+			tr
+				td = row[:ibid]
+				td = row[:box_number]
+				td = row[:name]
+				td = row[:description]
+				td = row[:picture]
+				td = row[:link]
+
+				td
+					span.edit : a href="/admin/info_box/edit/#{row[:ibid]}" = L[:fix]
+					span.delete : a href="/admin/info_box/rm/#{row[:ibid]}" = L[:del]
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url('/admin/info_box', :page_curr => i)}" = i

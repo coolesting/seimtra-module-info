@@ -4,80 +4,16 @@ html
 		title = @title
 		meta http-equiv="content-type" content="text/html; charset=UFT-8"
 		script src="/js/jquery-172.js" type="text/javascript"
-		link rel='stylesheet' type='text/css' href='/css/style.css'
+		link rel='stylesheet' type='text/css' href='#{_asset("/css/style.css")}'
+		link rel='stylesheet' type='text/css' href='#{_asset("/_assets/info/css/info.css")}'
 	body
 		#wrap
 			#header
 				#logo
-					a href="/info/s"
+					a href="/info/box"
 						img src="/_assets/info/images/logo-min.jpg" alt="logo"
-				form.form action="/info/result" method="get"
-					input type="text" name="sc" id="search_text"
-					input type="submit" value="#{L[:search]}" id="search_done"
-
-			#menu
-				- @top_menu.each do | row |
-					span : a href="/info/type/#{row[:itid]}" = row[:name]
-				- @sec_menu.each do | name, link |
-					span : a href="#{link}" = L[name]
 
 			== _inc(:_message)
 
 			#main == yield
-	
-		css:
-			#wrap {
-				padding: 10px;
-				width: 1024px;
-				margin: 0 auto;
-			}
 
-			#header #logo {
-				float: left;
-				margin-right: 10px;
-			}
-			#header #logo img {
-				width: 50px;
-				height: 50px;
-			}
-			#header .form {
-				margin-left: 60px;
-				width: 466px;
-				position: relative;
-				top: 10px;
-				height: 30px;
-				border: 3px solid #B2EEDB;
-			}
-			#header #search_text {
-				width: 370px; 
-				height: 25px;
-				font-size: 18px;
-				float: left;
-				border: none;
-				padding: 2px;
-			}
-			#header #search_done {
-				width: 92px;
-				height: 32px;
-				float: left;
-				font-weight: 900;
-				font-size: 18px;
-				border: none;
-				background: #DFF1F3;
-			}
-
-			#header a {
-				color: #000;
-				text-decoration: none;
-			}
-
-			#menu {
-				margin: 30px 0 15px 0;
-			}
-			#menu a {
-				color: #000;
-				text-decoration: none;
-			}
-			#menu span {
-				margin-right: 10px;
-			}

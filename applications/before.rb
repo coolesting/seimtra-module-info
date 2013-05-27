@@ -1,6 +1,6 @@
 
 configure do
-	set :home_page, '/info/s'
+	set :home_page, '/info/box'
 end
 
 before '/info/*' do

@@ -1,0 +1,18 @@
+form action="#{request.path}" method="post" id="form"
+	ul.ul
+		
+		li : label = L[:box_number]
+		li : input type="number" name="box_number" required="required" value="#{@fields[:box_number]}" min="1" max="99999"
+		
+		li : label = L[:name]
+		li : input type="text" name="name" required="required" value="#{@fields[:name]}"
+		
+		li : label = L[:description]
+		li : input type="text" name="description" value="#{@fields[:description]}"
+		
+		li : label = L[:picture]
+		li : input type="text" name="picture" value="#{@fields[:picture]}"
+		
+		li : label = L[:link]
+		li : input type="text" name="link" value="#{@fields[:link]}"
+		

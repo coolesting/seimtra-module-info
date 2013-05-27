@@ -9,12 +9,17 @@ get '/info/s' do
 #		:news => '/info/news',
 		:public => '/info/new'
 	}
-	_tpl :info_search, :layout => :layout
+	_tpl :info_search, :layout
 end
 
 get '/info/login' do
 	_tpl :info_login
 end
+
+get '/info/box' do
+	_tpl :info_box
+end
+
 
 # get '/info/news' do
 # 

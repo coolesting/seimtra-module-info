@@ -20,3 +20,9 @@ menu_name=info
 type=admin
 link=/admin/info_kw
 description=the keyword search cache
+
+name=box
+menu_name=info
+type=admin
+link=/admin/info_box
+description=information box
