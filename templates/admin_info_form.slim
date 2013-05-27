@@ -1,0 +1,20 @@
+form action="#{request.path}" method="post" id="form"
+	ul.ul
+		
+		li : label = L[:uid]
+		li : input type="text" name="uid" required="required" value="#{@fields[:uid]}"
+		
+		li : label = L[:title]
+		li : input type="text" name="title" required="required" value="#{@fields[:title]}"
+		
+		li : label = L[:body]
+		li : textarea name="body" required="required" = @fields[:body]
+		
+		li : label = L[:name]
+		- info_types = _kv(:info_type, :itid, :name)
+		li : select name="itid" required="required"
+			- info_types.each do | k,v |
+				- selected = @fields[:itid] == k ? "selected" : ""
+				option selected="#{selected}" value="#{k}" = v
+		
+		

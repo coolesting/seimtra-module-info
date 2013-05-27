@@ -1,0 +1,39 @@
+#info
+	- unless @info.empty?
+		- info_types = _kv(:info_type, :itid, :name)
+		- @info.each do | row |
+			div.list
+				p.title
+					a href="/info/view/#{row[:iid]}" = row[:title]
+					label.changed = row[:changed].strftime("%Y-%-m-%-d, %I:%M:%S %p") 
+				p.body = row[:body]
+	- else
+		p = L[:'No results found']
+
+
+css:
+
+	#info {
+		margin-bottom: 10px;
+	}
+	.list {
+		margin-bottom: 8px;
+	}
+	#info a {
+		color: #000;
+		text-decoration: none;
+	}
+	.title {
+		font-size: 20px;
+	}
+	.body {
+		font-size: 18px;
+	}
+	.changed {
+		font-size: 12px;
+		color: #8D8F94;
+		font-style: italic;
+		margin-left: 10px;
+	}
+
+

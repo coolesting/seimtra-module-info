@@ -1,0 +1,22 @@
+name=info
+type=admin
+link=/admin/info
+description=a public information system
+
+name=type
+menu_name=info
+type=admin
+link=/admin/info_type
+description=the info type
+
+name=info
+menu_name=info
+type=admin
+link=/admin/info
+description=the body of info
+
+name=keyword
+menu_name=info
+type=admin
+link=/admin/info_kw
+description=the keyword search cache

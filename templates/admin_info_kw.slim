@@ -1,0 +1,26 @@
+table.table
+	thead
+		th : a href="#{_url('/admin/info_kw', :order => 'ikid')}" = L[:ikid]
+		th : a href="#{_url('/admin/info_kw', :order => 'itid')}" = L[:itid]
+		th : a href="#{_url('/admin/info_kw', :order => 'key')}" = L[:key]
+		th : a href="#{_url('/admin/info_kw', :order => 'value')}" = L[:value]
+		th : a href="#{_url('/admin/info_kw', :order => 'changed')}" = L[:changed]
+		th
+	tbody
+		- @info_kw.each do | row |
+			tr
+				td = row[:ikid]
+				td = row[:itid]
+				td = row[:key]
+				td = row[:value]
+				td = row[:changed]
+
+				td
+					span.edit : a href="/admin/info_kw/edit/#{row[:ikid]}" = L[:fix]
+					span.delete : a href="/admin/info_kw/rm/#{row[:ikid]}" = L[:del]
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url('/admin/info_kw', :page_curr => i)}" = i
