@@ -1,1 +1,22 @@
-div boxs 
+.boxs 
+	- @boxs.each do | i |
+		- if @res.include? i
+			a href="#{@res[i][:link]}" title="#{@res[i][:description]}"
+				.box = @res[i][:name]
+		- else
+			.box
+
+css:
+	.boxs {
+		margin-top: 10px;
+	}
+	.boxs a {
+		color: #000;
+	}
+	.boxs .box {
+		float: left;
+		margin: 9px;
+		width: 65px;
+		height: 50px;
+		border: 1px solid #0B0B0C;
+	}

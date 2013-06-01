@@ -1,8 +1,8 @@
 #info
-	- unless @info.empty?
+	- unless @res.empty?
 		- info_types = _kv(:info_type, :itid, :name)
-		- @info.each do | row |
-			div.list
+		- @res.each do | row |
+			.list
 				p.title
 					a href="/info/view/#{row[:iid]}" = row[:title]
 					label.changed = row[:changed].strftime("%Y-%-m-%-d, %I:%M:%S %p") 

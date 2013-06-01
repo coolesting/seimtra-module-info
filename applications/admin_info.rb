@@ -1,5 +1,5 @@
 #display
-get '/admin/info' do
+get '/admin/infos' do
 
 	@rightbar += [:new, :search]
 	ds = DB[:info]
@@ -27,7 +27,7 @@ get '/admin/info' do
  	@info = ds.paginate(@page_curr, @page_size, ds.count)
  	@page_count = @info.page_count
 
-	_tpl :admin_info
+	_tpl :admin_infos
 
 end
 

@@ -10,10 +10,20 @@ html
 		#wrap
 			#header
 				#logo
-					a href="/info/box"
-						img src="/_assets/info/images/logo-min.jpg" alt="logo"
+					h1 Logo
+
+				#search
+					form action="/info/result" method="get"
+						input.text type="text" name="sc" id="search_text"
+						input.done type="submit" value="#{L[:search]}"
+
+				#menu
+					- @top_menu.each do | k, v |
+						a href="#{_url(v)}" = k
 
 			== _inc(:_message)
 
-			#main == yield
+			#bodyer == yield
+
+			#footer.clear
 

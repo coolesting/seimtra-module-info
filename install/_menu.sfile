@@ -7,13 +7,13 @@ name=type
 menu_name=info
 type=admin
 link=/admin/info_type
-description=the info type
+description=info type
 
-name=info
+name=infos
 menu_name=info
 type=admin
-link=/admin/info
-description=the body of info
+link=/admin/infos
+description=info record
 
 name=keyword
 menu_name=info
@@ -25,4 +25,4 @@ name=box
 menu_name=info
 type=admin
 link=/admin/info_box
-description=information box
+description=info box

@@ -9,7 +9,7 @@ get '/admin/info_box' do
 
 	#search condition
 	if @rightbar.include? :search
-		@search = {:ibid => 'ibid', :box_number => 'box_number', :name => 'name', :description => 'description', :picture => 'picture', :link => 'link', }
+		@search = {:ibid => 'ibid', :order => 'order', :name => 'name', :description => 'description', :picture => 'picture', :link => 'link', }
 	end
 
 	#order
@@ -86,7 +86,7 @@ helpers do
 	def info_box_set_fields
 		
 		default_values = {
-			:box_number		=> 1,
+			:order			=> 1,
 			:name			=> '',
 			:description	=> '',
 			:picture		=> '',
@@ -103,7 +103,7 @@ helpers do
 
 	def info_box_valid_fields
 		
-		#_throw(L[:'the field cannot be empty '] + L[:'box_number']) unless @fields[:box_number] > 0
+		#_throw(L[:'the field cannot be empty '] + L[:'order']) unless @fields[:order] > 0
 		
 		_throw(L[:'the field cannot be empty '] + L[:'name']) if @fields[:name].strip.size < 1
 		

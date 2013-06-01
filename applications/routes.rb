@@ -16,9 +16,6 @@ get '/info/login' do
 	_tpl :info_login
 end
 
-get '/info/box' do
-	_tpl :info_box
-end
 
 
 # get '/info/news' do

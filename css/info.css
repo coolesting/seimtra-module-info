@@ -4,11 +4,46 @@
 	margin: 0 auto;
 }
 
+#header {
+	height: 60px;
+	padding: 3px;
+	margin: 10px;
+	//background-color: #20A8E7;
+}
+#header #menu, #search {
+	float: right;
+	margin-left: 35px;
+}
 #header #logo {
 	float: left;
 	margin-right: 10px;
 }
+#header #menu {
+	margin-top: 8px;
+}
+#header #search {
+	margin-top: 7px;
+}
+
 #header #logo img {
 	width: 50px;
 	height: 50px;
+}
+
+#header #menu a {
+	font-size: 23px;
+	margin: 10px;
+	padding: 5px;
+	color: black;
+	text-decoration: none;
+}
+
+#header #search .text {
+	height: 25px;
+	width: 200px;
+}
+#header #search .done {
+	margin-left: 8px;
+	height: 30px;
+	width: 80px;
 }
