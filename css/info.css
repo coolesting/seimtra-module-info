@@ -47,3 +47,12 @@
 	height: 30px;
 	width: 80px;
 }
+#header #search .user_center {
+	float: right;
+	margin-top: 10px;
+	color: black;
+}
+#header #search .user_center a {
+	color: black;
+	text-decoration: none;
+}

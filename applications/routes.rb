@@ -13,9 +13,8 @@ get '/info/s' do
 end
 
 get '/info/login' do
-	_tpl :info_login
+	_user_login :info_login
 end
-
 
 
 # get '/info/news' do

@@ -1,22 +1,37 @@
 .boxs 
-	- @boxs.each do | i |
-		- if @res.include? i
-			a href="#{@res[i][:link]}" title="#{@res[i][:description]}"
-				.box = @res[i][:name]
-		- else
-			.box
+	.top_menu
+
+	.box_panel.clear
+		- @boxs.each do | i |
+			- if @res.include? i
+				- link = @res[i][:link] == '' ? _url("/info/shop/view/#{@res[i][:uid]}") : @res[i][:link]
+				a href="#{link}" title="#{@res[i][:description]}"
+					.box
+						- if @res[i][:picture] == ''
+							label = @res[i][:name]
+						- else
+							img src="#{_file(@res[i][:picture])}"
+			- else
+				.box
 
 css:
-	.boxs {
-		margin-top: 10px;
-	}
 	.boxs a {
 		color: #000;
 	}
-	.boxs .box {
-		float: left;
-		margin: 9px;
+	.boxs .top_menu {
+		height: 25px;
+	}
+
+
+	.boxs .box_panel {
+		min-height: 600px;
+	}
+	.boxs .box_panel .box, img {
 		width: 65px;
 		height: 50px;
+	}
+	.boxs .box_panel .box {
+		float: left;
+		margin: 9px;
 		border: 1px solid #0B0B0C;
 	}

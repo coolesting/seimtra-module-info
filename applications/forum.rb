@@ -1,4 +1,5 @@
-
+#post list
 get '/info/forum' do
-	_tpl :info_forum
+	cms_setup
 end
+

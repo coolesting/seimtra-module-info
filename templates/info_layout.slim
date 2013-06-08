@@ -2,24 +2,34 @@ doctype html
 html
 	head
 		title = @title
+		meta name="keywords" content="#{@keywords}"
+		meta name="description" content="#{@description}"
 		meta http-equiv="content-type" content="text/html; charset=UFT-8"
-		script src="/js/jquery-172.js" type="text/javascript"
-		link rel='stylesheet' type='text/css' href='#{_asset("/css/style.css")}'
-		link rel='stylesheet' type='text/css' href='#{_asset("/_assets/info/css/info.css")}'
+		script src="#{_public('/js/jquery-172.js')}" type="text/javascript"
+		link rel='stylesheet' type='text/css' href='#{_public("/css/style.css")}'
+		link rel='stylesheet' type='text/css' href='#{_assets("/info/css/info.css")}'
 	body
 		#wrap
 			#header
 				#logo
-					h1 Logo
+					h1 = _var(:website_logo, :info)
 
 				#search
-					form action="/info/result" method="get"
+					form action="#{_url('/info/shop')}" method="get"
 						input.text type="text" name="sc" id="search_text"
 						input.done type="submit" value="#{L[:search]}"
 
+					.user_center
+						- if _user[:uid] > 0
+							a href="#{_url('/info/user/' + _user[:uid].to_s)}" = _user[:name]
+							label  , 
+							a href="#{_path_of_logout}" = L[:'logout']
+						- else
+							a.user_center href='#{_url("/info/login")}' = L[:'login']
+
 				#menu
 					- @top_menu.each do | k, v |
-						a href="#{_url(v)}" = k
+						a href="#{_url(v)}" = L[k.to_sym]
 
 			== _inc(:_message)
 

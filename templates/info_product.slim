@@ -1,0 +1,70 @@
+#shop
+	.top_menu
+		a href="#{_url('/')}" = L[:home]
+		label &nbsp; >>
+		a href="#{_url('/info/home')}"
+
+	.description
+		p.title : h2 = L[:'shop information']
+		- unless @shop.empty?
+			form action="#{_url('/info/shop/edit')}" method="post" enctype="multipart/form-data"
+				table
+					tr
+						td
+							a href="#{_url('/info/shop/view/' + @shop[:uid].to_s)}"
+								img src="#{_file(@shop[:picture])}" 
+						td
+							p = L[:picture]
+							input type='file' name="upload"
+							input type='hidden' name="picture" value="#{@shop[:picture]}"
+							input type='hidden' name="order" value="#{@shop[:order]}"
+						td
+							p = L[:name]
+							input type='text' name="name" value="#{@shop[:name]}"
+						td
+							p = L[:description]
+							input type='text' name="description" value="#{@shop[:description]}"
+							input type='submit' value="#{L[:update]}"
+
+	.form
+		form action="#{_url('/info/shop/new')}" method="post" enctype="multipart/form-data"
+			.description
+				p.title : h2 = L[:'product release']
+				p : label = L[:picture]
+				p : input.text type="file" name="picture"
+				p : label = L[:description]
+				p : input.text type="text" name="description" required="required" placeholder="150 x 150 px" = @fields[:description]
+				p : input.done type="submit" value="#{L[:done]}"
+
+
+	.products
+		p.title : h2 = L[:'product list']
+		- unless @res.empty?
+			- @res.each do | row |
+				.product title="#{row[:description]}"
+					img.picture src="#{_file(row[:picture])}" 
+					- if row[:uid] == _user[:uid]
+						a.hide href="#{_url('/info/shop/rm/' + row[:ipid].to_s)}"
+							img src="#{_public('/icons/delete.png')}"
+					.des.text-overflow
+						= row[:description]
+		- else
+			p = L[:'No results found']
+
+		.clear
+
+		- if @page_count > 1
+			p.page_bar
+				- for i in 1..@page_count
+					- page_focus = i == @page_curr ? "page_focus" : ""
+					a class="#{page_focus}" href="#{_url2(request.path, :page_curr => i)}" = i
+
+link rel='stylesheet' type='text/css' href='#{_assets("/info/css/shop.css")}'
+
+javascript:
+
+	$('#shop .product').hover(function(){
+		$(this).find('.hide').show();
+	}, function(){
+		$(this).find('.hide').hide();
+	});

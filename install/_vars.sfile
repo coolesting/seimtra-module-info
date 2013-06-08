@@ -1,0 +1,15 @@
+skey=website_title
+sval=info title
+tag=info
+
+skey=website_keywords
+sval=info keywords
+tag=info
+
+skey=website_description
+sval=info description
+tag=info
+
+skey=website_logo
+sval=logo
+tag=info

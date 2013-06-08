@@ -26,3 +26,9 @@ menu_name=info
 type=admin
 link=/admin/info_box
 description=info box
+
+name=product
+menu_name=info
+type=admin
+link=/admin/info_product
+description=product information

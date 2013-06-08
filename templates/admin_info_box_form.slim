@@ -2,17 +2,19 @@ form action="#{request.path}" method="post" id="form"
 	ul.ul
 		
 		li : label = L[:order]
-		li : input type="number" name="order" required="required" value="#{@fields[:order]}" min="1" max="99999"
-		
+		li : input type="number" name="order" required="required" value="#{@fields[:order]}" min="0" max="99999"
+
 		li : label = L[:name]
 		li : input type="text" name="name" required="required" value="#{@fields[:name]}"
 		
 		li : label = L[:description]
 		li : input type="text" name="description" value="#{@fields[:description]}"
 		
-		li : label = L[:picture]
+		li
+			label = L[:picture] 
+			label &nbsp; fid
 		li : input type="text" name="picture" value="#{@fields[:picture]}"
 		
-		li : label = L[:link]
+		li : label = L[:'page link']
 		li : input type="text" name="link" value="#{@fields[:link]}"
 		

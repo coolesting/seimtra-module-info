@@ -1,0 +1,23 @@
+table.table
+	thead
+		th : a href="#{_url('/admin/info_product', :order => 'ipid')}" = L[:ipid]
+		th : a href="#{_url('/admin/info_product', :order => 'uid')}" = L[:uid]
+		th : a href="#{_url('/admin/info_product', :order => 'description')}" = L[:description]
+		th : a href="#{_url('/admin/info_product', :order => 'picture')}" = L[:picture]
+		th
+	tbody
+		- @info_product.each do | row |
+			tr
+				td = row[:ipid]
+				td = row[:uid]
+				td = row[:description]
+				td = row[:picture]
+
+				td
+					span.delete : a href="/admin/info_product/rm/#{row[:ipid]}" = L[:del]
+
+- if @page_count > 1
+	p.page_bar
+		- for i in 1..@page_count
+			- page_focus = i == @page_curr ? "page_focus" : ""
+			span : a class="#{page_focus}" href="#{_url2('/admin/info_product', :page_curr => i)}" = i

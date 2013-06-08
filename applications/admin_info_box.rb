@@ -9,7 +9,7 @@ get '/admin/info_box' do
 
 	#search condition
 	if @rightbar.include? :search
-		@search = {:ibid => 'ibid', :order => 'order', :name => 'name', :description => 'description', :picture => 'picture', :link => 'link', }
+		@search = {:ibid => 'ibid', :order => 'order', :name => 'name', :description => 'description', :picture => 'picture', :link => 'link', :uid => 'uid'}
 	end
 
 	#order
@@ -86,7 +86,8 @@ helpers do
 	def info_box_set_fields
 		
 		default_values = {
-			:order			=> 1,
+			:order			=> 0,
+			:uid			=> _user[:uid],
 			:name			=> '',
 			:description	=> '',
 			:picture		=> '',

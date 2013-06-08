@@ -1,0 +1,36 @@
+#shop
+	.top_menu
+		a href="#{_url('/')}" = L[:home]
+		label &nbsp; >>
+		a href="#{_url('/info/home')}"
+
+	.desciption
+		- unless @description.empty?
+			table
+				tr
+					td
+						img src="#{_file(@description[:picture])}" 
+					td
+						form action="#{_url('/info/box/update')}" method="post" enctype="multipart/form-data"
+							input type='file' name="pictrue"
+							input type='text' name="description" value="#{@description[:description]}"
+							input type='submit' value="#{L[:update]}"
+
+	.top_menu
+		a href="#{_url('/info/shop/new')}"
+			input.button type="button" value="#{L[:create]}"
+
+	form.form action="#{request.path}" method="post" enctype="multipart/form-data"
+		.top_menu
+			input.done type="submit" value="#{L[:done]}"
+			a href="#{_url('/info/user/' + _user[:uid].to_s)}"
+				input.done type="button" value="#{L[:return]}"
+
+		.desciption
+			p : h2 = L[:'public product']
+			p : label = L[:picture]
+			p : input.text type="file" name="picture"
+			p : label = L[:description]
+			p : input.text type="text" name="description" required="required" placeholder="150 x 150 px" = @fields[:description]
+
+link rel='stylesheet' type='text/css' href='#{_assets("/info/css/shop.css")}'
