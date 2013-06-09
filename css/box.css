@@ -1,0 +1,21 @@
+
+#boxs a {
+	color: #000;
+}
+#boxs .top_menu {
+	height: 25px;
+}
+
+
+#boxs .box_panel {
+	min-height: 600px;
+}
+#boxs .box_panel .box, img {
+	width: 65px;
+	height: 50px;
+}
+#boxs .box_panel .box {
+	float: left;
+	margin: 9px;
+	border: 1px solid #0B0B0C;
+}

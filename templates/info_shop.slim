@@ -1,9 +1,4 @@
 #shop
-	.top_menu
-		a href="#{_url('/')}" = L[:home]
-		label &nbsp; >>
-		a href="#{_url('/info/home')}"
-
 	- user = _kv(:_user, :uid, :name)
 	- unless @shop.empty?
 		.description
