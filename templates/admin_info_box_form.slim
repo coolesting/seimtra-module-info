@@ -4,6 +4,9 @@ form action="#{request.path}" method="post" id="form"
 		li : label = L[:order]
 		li : input type="number" name="order" required="required" value="#{@fields[:order]}" min="0" max="99999"
 
+		li : label = L[:uid]
+		li : input type="text" name="uid" required="required" value="#{@fields[:uid]}"
+
 		li : label = L[:name]
 		li : input type="text" name="name" required="required" value="#{@fields[:name]}"
 		

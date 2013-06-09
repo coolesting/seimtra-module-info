@@ -15,7 +15,7 @@
 						p = @shop[:name]
 						p = @shop[:description]
 
-			- if _user[:uid] > 0
+			- if _user[:uid] > 0 and params[:uid] == _user[:uid]
 				p : a.right.hide.edit href='#{_url("/info/user/#{_user[:uid]}")}' = L[:edit]
 
 	.products
