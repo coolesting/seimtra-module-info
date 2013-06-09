@@ -19,3 +19,13 @@
 	margin: 9px;
 	border: 1px solid #0B0B0C;
 }
+
+#boxs .show_box {
+	position: absolute;
+}
+#boxs .show_box img {
+	width: 300px;
+	height: 300px;
+	padding: 5px;
+	border: 1px solid black;
+}

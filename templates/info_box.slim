@@ -19,7 +19,10 @@ link rel='stylesheet' type='text/css' href='#{_assets("/info/css/box.css")}'
 javascript:
 
 	$('.box').hover(function(){
-		$(this).find('.hide').show();
+		$(this).after("<div class='show_box'>" + $(this).html() + "</div>");
+		$('.show_box').css('top', $(this).offset().top + $(this).height() + 5);
+		$('.show_box').css('left', $(this).offset().left);
 	}, function(){
-		$(this).find('.hide').hide();
+		$('.show_box').remove();
 	});
+
