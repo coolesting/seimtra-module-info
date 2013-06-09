@@ -12,7 +12,8 @@ html
 		#wrap
 			#header
 				#logo
-					h1 = _var(:website_logo, :info)
+					a href="#{_url(settings.home_page)}"
+						h1 = _var(:website_logo, :info)
 
 				#search
 					form action="#{_url('/info/shop')}" method="get"

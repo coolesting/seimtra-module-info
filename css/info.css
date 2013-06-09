@@ -10,6 +10,10 @@
 	margin: 10px;
 	//background-color: #20A8E7;
 }
+#header a {
+	color: black;
+	text-decoration: none;
+}
 #header #menu, #search {
 	float: right;
 	margin-left: 35px;
@@ -34,8 +38,6 @@
 	font-size: 23px;
 	margin: 10px;
 	padding: 5px;
-	color: black;
-	text-decoration: none;
 }
 
 #header #search .text {

@@ -14,8 +14,8 @@ before '/info/*' do
 	#@menu = DB[:_menu].filter(:type => 'info').all
 	#@top_menu = DB[:info_type].all
 	@top_menu = {
-		:home 	=> '/info/box',
-		:forum 	=> '/info/forum',
+		#:home 	=> '/info/box',
+		#:forum 	=> '/info/forum',
 	}
 
 end
