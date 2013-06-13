@@ -1,25 +1,13 @@
 name=info
 type=admin
 link=/admin/info
-description=a public information system
+description=a information release system
 
 name=type
 menu_name=info
 type=admin
 link=/admin/info_type
 description=info type
-
-name=infos
-menu_name=info
-type=admin
-link=/admin/infos
-description=info record
-
-name=keyword
-menu_name=info
-type=admin
-link=/admin/info_kw
-description=the keyword search cache
 
 name=box
 menu_name=info

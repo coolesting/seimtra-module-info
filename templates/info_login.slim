@@ -1,1 +1,30 @@
-== _inc(:_login)
+#user_login
+	form action="#{_url2('/_login')}" method="post"
+		ul
+			li : label = L[:account]
+			li : input type="text" name="name" required="required" placeholder="#{L[:username]}"
+
+			li : label = L[:password]
+			li : input type="password" name="pawd" required="required" placeholder="#{L[:password]}"
+
+			li
+				input.width60 type="submit" value="#{L[:register]}"
+
+			- if _var(:allow_register, :user) == 'yes'
+				input type="hidden" name="userstate" value="new"
+
+css:
+
+	#user_login { 
+		width: 180px;
+		margin: 0 2px; 
+		padding: 8px;
+		border: 1px solid #AC8C80;
+	}
+	#user_login li {
+		margin-bottom: 8px; 
+	}
+	#user_login .font13 {
+		font-size: 13px;
+	}
+	.width60 { width: 60px; }

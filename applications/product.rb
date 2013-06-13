@@ -1,12 +1,12 @@
 # =========================
 # 	create a product
 # =========================
-get '/info/shop/new' do
-	_login? '/info/login'
-	@title = L[:'Create a new product']
-	info_product_set_fields
-	_tpl :info_product_form
-end
+# get '/info/shop/new' do
+# 	_login? '/info/login'
+# 	@title = L[:'Create a new product']
+# 	info_product_set_fields
+# 	_tpl :info_product_edit
+# end
 
 post '/info/shop/new' do
 	info_product_new params
@@ -29,11 +29,12 @@ end
 # =========================
 # display by search
 get '/info/shop' do
-	@title = L[:'shop']
 	@res = []
 	@shop = {}
 
 	if params[:sc] and params[:sc].strip.size > 0
+		@title = params[:sc] + " - " +  @title
+		@keywords = params[:sc]
 		ds = DB[:info_product].where(Sequel.like(:description, "%#{params[:sc]}%"))
 	else
 		ds = DB[:info_product]
@@ -49,13 +50,17 @@ end
 
 #display by uid
 get '/info/shop/view/:uid' do
-	@title = L[:'shop']
 	@res = []
 	@shop = {}
 
 	#info of shop
 	ds = DB[:info_box].filter(:uid => params[:uid])
-	@shop = ds.first unless ds.empty?
+	unless ds.empty?
+		@shop = ds.first
+		@title = @shop[:name] + " - " +  @title
+		@keywords = @shop[:name]
+		@description = @shop[:description]
+	end
 
 	#product
 	ds = DB[:info_product].filter(:uid => params[:uid])
@@ -87,7 +92,7 @@ get '/info/user/:uid' do
 	ds = DB[:info_product].filter(:uid => params[:uid])
 	@res = ds.all unless ds.empty?
 
-	_tpl :info_product
+	_tpl :info_product_edit
 end
 
 # shop update

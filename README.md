@@ -1,3 +1,3 @@
 ## INTRODUCTION
 
-a public infomation system
+a infomation release system

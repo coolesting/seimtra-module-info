@@ -22,6 +22,7 @@
 
 #boxs .show_box {
 	position: absolute;
+	background-color: white;
 }
 #boxs .show_box img {
 	width: 300px;

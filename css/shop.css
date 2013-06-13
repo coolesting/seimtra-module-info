@@ -21,8 +21,8 @@
 	padding: 5px;
 }
 #shop .description img {
-	width: 100px;
-	height: 100px;
+	width: 490px;
+	height: 180px;
 }
 
 #shop .products {
@@ -30,28 +30,22 @@
 }
 #shop .product {
 	float: left;
-	width: 124px;
-	height: 144px;
+	width: 233px;
+	height: 254px;
 	border: 1px solid black;
 	padding: 5px;
 	margin: 0 10px 10px 0;
 }
 #shop .product .picture {
-	width: 122px;
-	height: 122px;
+	width: 232px;
+	height: 230px;
 }
 #shop .product a {
 	font-size: 12px;
 	position: relative;
 	float: right;
 }
-.text-overflow {
-	display: block;
-	word-break: keep-all;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
+
 
 
 /** shop form **/

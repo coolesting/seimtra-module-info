@@ -6,6 +6,7 @@ html
 		meta name="description" content="#{@description}"
 		meta http-equiv="content-type" content="text/html; charset=UFT-8"
 		script src="#{_public('/js/jquery-172.js')}" type="text/javascript"
+		link rel="shortcut icon" href="#{_file(_var(:shortcut_icon, :system))}"
 		link rel='stylesheet' type='text/css' href='#{_public("/css/style.css")}'
 		link rel='stylesheet' type='text/css' href='#{_assets("/info/css/info.css")}'
 	body
@@ -26,7 +27,16 @@ html
 							label  , 
 							a href="#{_path_of_logout}" = L[:'logout']
 						- else
-							a.user_center href='#{_url("/info/login")}' = L[:'login']
+							#user_login2
+								form action="#{_url2('/_login')}" method="post"
+									input.text type="text" name="name" required="required" placeholder="#{L[:username]}"
+									input.text type="password" name="pawd" required="required" placeholder="#{L[:password]}"
+									input.button type="submit" value="#{L[:enter]}"
+
+									- if _var(:allow_register, :user) == 'yes'
+										a href="#{@_path_of_login}"
+											input.button type="button" value="#{L[:register]}"
+
 
 				#menu
 					- @top_menu.each do | k, v |

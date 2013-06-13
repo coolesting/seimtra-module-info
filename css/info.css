@@ -5,7 +5,7 @@
 }
 
 #header {
-	height: 60px;
+	height: 80px;
 	padding: 3px;
 	margin: 10px;
 	//background-color: #20A8E7;
@@ -42,7 +42,7 @@
 
 #header #search .text {
 	height: 25px;
-	width: 200px;
+	width: 270px;
 }
 #header #search .done {
 	margin-left: 8px;
@@ -57,4 +57,23 @@
 #header #search .user_center a {
 	color: black;
 	text-decoration: none;
+}
+
+.text-overflow {
+	display: block;
+	word-break: keep-all;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#header #search #user_login2 .text {
+	width: 130px;
+	height: 15px;
+}
+#header #search #user_login2 .text, .button {
+	margin-right: 5px;
+}
+#header #search #user_login2 .button {
+	width: 40px;
 }

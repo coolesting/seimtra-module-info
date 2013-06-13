@@ -3,6 +3,7 @@ Sequel.migration do
 		create_table(:info_product) do
 			primary_key :ipid
 			Integer :uid
+			Integer :itid
 			Integer :picture
 			String :description
 			Datetime :created
