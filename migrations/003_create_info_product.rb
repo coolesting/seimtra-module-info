@@ -5,6 +5,7 @@ Sequel.migration do
 			Integer :uid
 			Integer :itid
 			Integer :picture
+			String :name
 			String :description
 			Datetime :created
 		end

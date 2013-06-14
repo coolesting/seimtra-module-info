@@ -52,6 +52,7 @@ end
 get '/info/shop/view/:uid' do
 	@res = []
 	@shop = {}
+	@page_size = 20
 
 	#info of shop
 	ds = DB[:info_box].filter(:uid => params[:uid])

@@ -9,7 +9,7 @@ get '/admin/info_product' do
 
 	#search condition
 	if @rightbar.include? :search
-		@search = {:ipid => 'ipid', :uid => 'uid', :description => 'description', :picture => 'picture', }
+		@search = {:ipid => 'ipid', :uid => 'uid', :name => 'name', :description => 'description', :picture => 'picture', }
 	end
 
 	#order
@@ -79,6 +79,7 @@ helpers do
 	def info_product_set_fields
 		default_values = {
 			:uid			=> _user[:uid],
+			:name			=> '',
 			:description	=> '',
 			:picture		=> 1
 		}
@@ -93,6 +94,8 @@ helpers do
 	def info_product_valid_fields
 		#_throw(L[:'the field cannot be empty '] + L[:'uid']) if @fields[:uid] != 0
 		
+		_throw(L[:'the field cannot be empty '] + L[:'description']) if @fields[:description].strip.size < 1
+
 		_throw(L[:'the field cannot be empty '] + L[:'description']) if @fields[:description].strip.size < 1
 	end
 

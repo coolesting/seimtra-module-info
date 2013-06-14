@@ -8,6 +8,7 @@ before '/info/*' do
 	@title 			= _var(:website_title, :info)
 	@keywords		= _var(:website_keywords, :info)
 	@description	= _var(:website_description, :info)
+	@footer			= _var(:website_footer, :info)
 
 	@_path_of_login = '/info/login'
 

@@ -13,3 +13,7 @@ tag=info
 skey=website_logo
 sval=logo
 tag=info
+
+skey=website_footer
+sval=footer
+tag=info

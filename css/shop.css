@@ -14,9 +14,9 @@
 
 #shop .description {
 	padding: 5px;
-	border: 1px solid #86B1B1;
 }
 #shop .description td {
+	width: 50%;
 	font-size: 19px;
 	padding: 5px;
 }
@@ -24,21 +24,38 @@
 	width: 490px;
 	height: 180px;
 }
+#shop .description .name {
+	font-size: 25px;
+	text-align: center;
+	font-weight: 900;
+}
+#shop .description .des {
+	font-size: 20px;
+	text-align: center;
+}
 
 #shop .products {
 	padding: 1px;
 }
 #shop .product {
 	float: left;
-	width: 233px;
-	height: 254px;
-	border: 1px solid black;
-	padding: 5px;
-	margin: 0 10px 10px 0;
+	width: 122px;
+	height: 156px;
+	padding: 7px;
+	margin: 0 10px 20px 0;
+	cursor: pointer;
+	background-color: #E3EEEB;
 }
-#shop .product .picture {
-	width: 232px;
-	height: 230px;
+#shop .product .picture img {
+	width: 122px;
+	height: 124px;
+}
+#shop .product .name {
+	font-size: 13px;
+	font-weight: 900;
+}
+#shop .product .des {
+	font-size: 13px;
 }
 #shop .product a {
 	font-size: 12px;
@@ -69,3 +86,16 @@
 	bottom: 10px;
 	right: 10px;
 }
+
+/** shop page bar **/
+#shop .page_bar {
+	margin-top: 20px;
+}
+#shop .page_bar a {
+	padding: 5px;
+	margin: 5px;
+}
+#shop .page_focus {
+	background-color: #86B1B1;
+}
+

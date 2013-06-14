@@ -2,6 +2,7 @@ table.table
 	thead
 		th : a href="#{_url('/admin/info_product', :order => 'ipid')}" = L[:ipid]
 		th : a href="#{_url('/admin/info_product', :order => 'uid')}" = L[:uid]
+		th : a href="#{_url('/admin/info_product', :order => 'name')}" = L[:name]
 		th : a href="#{_url('/admin/info_product', :order => 'description')}" = L[:description]
 		th : a href="#{_url('/admin/info_product', :order => 'picture')}" = L[:picture]
 		th
@@ -10,6 +11,7 @@ table.table
 			tr
 				td = row[:ipid]
 				td = row[:uid]
+				td = row[:name]
 				td = row[:description]
 				td = row[:picture]
 
