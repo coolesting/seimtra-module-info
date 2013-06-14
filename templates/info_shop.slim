@@ -53,6 +53,7 @@ javascript:
 
 	$('#shop .product').click(function(){
 		$("#wrap").before("<div class='show_box'><div class='show_box_bg'/><div class='show_box_panel'>" + $(this).find('.picture').html() + "</div></div>");
+
 		$('.show_box').css('position', 'absolute');
 		$('.show_box').css('z-index', 1);
 
@@ -67,8 +68,14 @@ javascript:
 		$('.show_box_panel').css('padding', '5px');
 		$('.show_box_panel').css('background-color', 'white');
 		$('.show_box_panel').css('position', 'absolute');
-		$('.show_box_panel').css('top', ($("#wrap").height() / 4));
-		$('.show_box_panel').css('left', ($("#wrap").width() / 2));
+		$('.show_box_panel').css('margin', '0 auto');
+
+		var top = ($("body").height() / 4) - ($(this).find('img').height() / 4);
+		var left = ($("body").width() / 2) - ($(this).find('img').width() / 2);
+		
+		$('.show_box_panel').css('top', top);
+		$('.show_box_panel').css('left', left);
+
 		$(".show_box").click(function(){
 			$(this).remove();
 		})
