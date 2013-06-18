@@ -34,7 +34,7 @@ html
 									input.button type="submit" value="#{L[:enter]}"
 
 									- if _var(:allow_register, :user) == 'yes'
-										a href="#{@_path_of_login}"
+										a href="#{_url(@_path_of_login, :userstate => 'new')}"
 											input.button type="button" value="#{L[:register]}"
 
 
