@@ -16,7 +16,7 @@
 				.product
 					.picture : img src="#{_file(row[:picture])}" 
 					.name.text-overflow
-						= row[:name]
+						b = row[:name]
 					.des.text-overflow
 						= row[:description]
 		- else
@@ -48,14 +48,14 @@ javascript:
 	});
 
 	$('#product_view .product').click(function(){
-		$("#wrap").before("<div class='show_box'><div class='show_box_bg'/><img class='show_box_panel'src='" + $(this).find('img').attr('src') + "' /></div>");
+		$("#wrap").before("<div class='show_box'><div class='show_box_bg'/><div class='show_box_panel'>" + $(this).html() + "</div></div>");
 
 		$('.show_box').css('position', 'absolute');
 		$('.show_box').css('z-index', 111);
 
 		$('.show_box_bg').css('padding', "10px");
-		$('.show_box_bg').css('width', $(window).width());
-		$('.show_box_bg').css('height', $(window).height());
+		$('.show_box_bg').css('width', $('body').width());
+		$('.show_box_bg').css('height', $('body').height());
 		$('.show_box_bg').css('background-color', '#E3EEEB');
 		$('.show_box_bg').css('filter', 'alpha(opacity=70)');
 		$('.show_box_bg').css('-moz-opacity', '0.7');
@@ -68,9 +68,15 @@ javascript:
 
 		var top = ($(window).height() / 2) - ($('.show_box').find('img').height() / 2);
 		var left = ($(window).width() / 2) - ($('.show_box').find('img').width() / 2);
-		
 		$('.show_box_panel').css('top', top);
 		$('.show_box_panel').css('left', left);
+
+		$(document).scroll(function(){
+			var top = ($(window).height() / 2) - ($('.show_box').find('img').height() / 2);
+			var scrollTop = $(window).scrollTop();
+			$('.show_box_panel').css('top', top + scrollTop);
+		});
+
 
 		$(".show_box").click(function(){
 			$(this).remove();
