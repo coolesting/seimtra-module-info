@@ -11,19 +11,19 @@
 				input.width60 type="submit" value="#{L[:enter]}"
 
 			- if _var(:allow_register, :user) == 'yes'
-				- if @qs[:userstate] == 'old'
-					li.font13
-						input id="radio-old" checked="checked" type="radio" name="userstate" value="old"
-						label for="radio-old" = L[:'i am old friend']
-					li.font13
-						input id="radio-new" type="radio" name="userstate" value="new"
-						label for="radio-new" = L[:'i am a new one, this is the first time to log']
-				- else
+				- if @qs[:userstate] == 'new'
 					li.font13
 						input id="radio-old" type="radio" name="userstate" value="old"
 						label for="radio-old" = L[:'i am old friend']
 					li.font13
 						input id="radio-new" checked="checked" type="radio" name="userstate" value="new"
+						label for="radio-new" = L[:'i am a new one, this is the first time to log']
+				- else
+					li.font13
+						input id="radio-old" checked="checked" type="radio" name="userstate" value="old"
+						label for="radio-old" = L[:'i am old friend']
+					li.font13
+						input id="radio-new" type="radio" name="userstate" value="new"
 						label for="radio-new" = L[:'i am a new one, this is the first time to log']
 
 

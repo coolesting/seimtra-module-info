@@ -16,7 +16,7 @@ before '/info/*' do
 	#@top_menu = DB[:info_type].all
 	@top_menu = {
 		#:home 	=> '/info/box',
-		#:forum 	=> '/info/forum',
+		#:forum => '/info/forum',
 	}
 
 end
