@@ -1,57 +1,56 @@
-#shop
+#product_edit
 	.top_menu
 		a href="#{_url('/')}" = L[:home]
 		label &nbsp; >>
-		a href="#{_url('/info/home')}"
+		a href="#{_url('/')}"
 
-	.description
-		p.title : h2 = L[:'shop information']
-		- unless @shop.empty?
-			form action="#{_url('/info/shop/edit')}" method="post" enctype="multipart/form-data"
+	.box
+		p : h2.title = L[:'shop information']
+		- unless @box.empty?
+			form action="#{_url('/info/box/edit')}" method="post" enctype="multipart/form-data"
 				table
 					tr
 						td
-							a href="#{_url('/info/shop/view/' + @shop[:uid].to_s)}"
-								img src="#{_file(@shop[:picture])}" 
+							span.show_img
+								a href="#{_url('/info/product/view/' + @box[:uid].to_s)}"
+									img src="#{_file(@box[:picture])}" 
+						td
+							p = L[:name]
+							input.text type='text' name="name" value="#{@box[:name]}"
+					tr
 						td
 							p
 								lable = L[:picture]
 								label  (490 x 180 px)
-							input type='file' name="upload"
-							input type='hidden' name="picture" value="#{@shop[:picture]}"
-							input type='hidden' name="order" value="#{@shop[:order]}"
-					tr
-						td
-							p = L[:name]
-							input type='text' name="name" value="#{@shop[:name]}"
+							input.text type='file' name="upload"
+							input type='hidden' name="picture" value="#{@box[:picture]}"
+							input type='hidden' name="order" value="#{@box[:order]}"
 						td
 							p = L[:description]
-							input type='text' name="description" value="#{@shop[:description]}"
-							input type='submit' value="#{L[:update]}"
+							input.mr10.text type='text' name="description" value="#{@box[:description]}"
+							input.done type='submit' value="#{L[:update]}"
 
 	.form
-		form action="#{_url('/info/shop/new')}" method="post" enctype="multipart/form-data"
-			.description
-				p.title : h2 = L[:'product release']
-				p : label = L[:picture] 
-				p : input.text type="file" name="picture"
-				p : label = L[:name]
-				p : input.text type="text" name="name" required="required" placeholder="150 x 150 px" = @fields[:name]
-				p : label = L[:description]
-				p : input.text type="text" name="description" required="required" placeholder="150 x 150 px" = @fields[:description]
-				p : input.done type="submit" value="#{L[:done]}"
+		p : h2.title = L[:'product release']
+		form action="#{_url('/info/product/new')}" method="post" enctype="multipart/form-data"
+			p : label = L[:picture] 
+			p : input.text type="file" name="picture"
+			p : label = L[:name]
+			p : input.text type="text" name="name" required="required" placeholder="20 size" = @fields[:name]
+			p : label = L[:description]
+			p : input.text type="text" name="description" required="required" placeholder="140 size" = @fields[:description]
+			p : input.done type="submit" value="#{L[:done]}"
 
 
 	.products
-		p.title : h2 = L[:'product list']
+		p : h2.title = L[:'product list']
 		- unless @res.empty?
 			- @res.each do | row |
 				.product title="#{row[:name]}"
 					.picture : img src="#{_file(row[:picture])}" 
-					- if row[:uid] == _user[:uid]
-						a.hide href="#{_url('/info/shop/rm/' + row[:ipid].to_s)}"
-							img src="#{_public('/icons/delete.png')}"
-					.des.text-overflow
+					a.hide href="#{_url('/info/product/rm/' + row[:ipid].to_s)}"
+						img src="#{_public('/icons/delete.png')}"
+					.name.text-overflow
 						= row[:name]
 		- else
 			p = L[:'No results found']
@@ -64,12 +63,24 @@
 					- page_focus = i == @page_curr ? "page_focus" : ""
 					a class="#{page_focus}" href="#{_url2(request.path, :page_curr => i)}" = i
 
-link rel='stylesheet' type='text/css' href='#{_assets("/info/css/shop.css")}'
+link rel='stylesheet' type='text/css' href='#{_assets("/info/css/product_edit.css")}'
 
 javascript:
 
-	$('#shop .product').hover(function(){
+	$('#product_edit .product').hover(function(){
 		$(this).find('.hide').show();
 	}, function(){
 		$(this).find('.hide').hide();
 	});
+
+	$('.show_img').hover(function(){
+		$(this).after("<div class='show_box'>" + $(this).html() + "</div>");
+		$('.show_box').css('position', 'absolute');
+		$('.show_box img').css('width', '490px');
+		$('.show_box img').css('height', '180px');
+		$('.show_box').css('top', $(this).offset().top - 110);
+		$('.show_box').css('left', $(this).offset().left + $(this).width() + 5);
+	}, function(){
+		$('.show_box').remove();
+	});
+

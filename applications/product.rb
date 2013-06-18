@@ -1,36 +1,11 @@
-# =========================
-# 	create a product
-# =========================
-# get '/info/shop/new' do
-# 	_login? '/info/login'
-# 	@title = L[:'Create a new product']
-# 	info_product_set_fields
-# 	_tpl :info_product_edit
-# end
-
-post '/info/shop/new' do
-	info_product_new params
-	_msg L[:'public complete']
-	redirect _url("/info/user/#{_user[:uid]}")
-end
-
-
-# =========================
-# 	delete the product
-# =========================
-get '/info/shop/rm/:ipid' do
-	info_product_rm params[:ipid]
-	redirect back
-end
-
 
 # =========================
 # 	show the product
 # =========================
 # display by search
-get '/info/shop' do
+get '/info/product/s' do
 	@res = []
-	@shop = {}
+	@box = {}
 
 	if params[:sc] and params[:sc].strip.size > 0
 		@title = params[:sc] + " - " +  @title
@@ -45,22 +20,22 @@ get '/info/shop' do
 		@res = ds.paginate(@page_curr, @page_size, ds.count)
 		@page_count = @res.page_count
 	end
-	_tpl :info_shop
+	_tpl :info_product_view
 end
 
 #display by uid
-get '/info/shop/view/:uid' do
+get '/info/product/view/:uid' do
 	@res = []
-	@shop = {}
+	@box = {}
 	@page_size = 35
 
-	#info of shop
+	#info of box
 	ds = DB[:info_box].filter(:uid => params[:uid])
 	unless ds.empty?
-		@shop = ds.first
-		@title = @shop[:name] + " - " +  @title
-		@keywords = @shop[:name]
-		@description = @shop[:description]
+		@box = ds.first
+		@title = @box[:name] + " - " +  @title
+		@keywords = @box[:name]
+		@description = @box[:description]
 	end
 
 	#product
@@ -70,37 +45,51 @@ get '/info/shop/view/:uid' do
 		@res = ds.paginate(@page_curr, @page_size, ds.count)
 		@page_count = @res.page_count
 	end
-	_tpl :info_shop
+	_tpl :info_product_view
+end
+
+
+# =========================
+# 	delete the product
+# =========================
+get '/info/product/rm/:ipid' do
+	info_product_rm params[:ipid]
+	redirect back
 end
 
 
 # =========================
 # 		user center
 # =========================
-# display user shop and products
-get '/info/user/:uid' do
-	@title = L[:'user center']
+# display user box and products
+get '/info/user' do
 	_login?
+	@title = L[:'user center']
 	@res = []
-	info_box_set_fields
-	@shop = @fields
+	uid	= _user[:uid]
 
-	#info of shop
-	ds = DB[:info_box].filter(:uid => params[:uid])
-	@shop = ds.first unless ds.empty?
+	#info of box
+	info_box_set_fields
+	@box = @fields
+	ds = DB[:info_box].filter(:uid => uid)
+	@box = ds.first unless ds.empty?
 
 	#product
-	ds = DB[:info_product].filter(:uid => params[:uid])
-	@res = ds.all unless ds.empty?
+	ds = DB[:info_product].filter(:uid => uid)
+	unless ds.empty?
+		Sequel.extension :pagination
+		@res = ds.paginate(@page_curr, @page_size, ds.count)
+		@page_count = @res.page_count
+	end
 
 	_tpl :info_product_edit
 end
 
-# shop update
-post '/info/shop/edit' do
+# box update
+post '/info/box/edit' do
 	ds = DB[:info_box].filter(:uid => _user[:uid])
 
-	#create a shop
+	#create a box
 	if ds.empty?
 
 		info_box_set_fields
@@ -111,7 +100,7 @@ post '/info/shop/edit' do
 		end
 		DB[:info_box].insert(@fields)
 
-	#update the shop info
+	#update the box info
 	else
 
 		fields 					= {}
@@ -127,4 +116,21 @@ post '/info/shop/edit' do
 
 	end
 	redirect back
+end
+
+# =========================
+# 	create a product
+# =========================
+# get '/info/shop/new' do
+# 	_login? '/info/login'
+# 	@title = L[:'Create a new product']
+# 	info_product_set_fields
+# 	_tpl :info_product_edit
+# end
+
+
+post '/info/product/new' do
+	info_product_new params
+	_msg L[:'public complete']
+	redirect _url('/info/user')
 end

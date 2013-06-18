@@ -1,36 +1,80 @@
-#shop
-	.top_menu
-		a href="#{_url('/')}" = L[:home]
-		label &nbsp; >>
-		a href="#{_url('/info/home')}"
-
-	.desciption
-		- unless @description.empty?
+#product_view
+	- user = _kv(:_user, :uid, :name)
+	- unless @box.empty?
+		.box
 			table
 				tr
 					td
-						img src="#{_file(@description[:picture])}" 
+						img src="#{_file(@box[:picture])}" 
 					td
-						form action="#{_url('/info/box/update')}" method="post" enctype="multipart/form-data"
-							input type='file' name="pictrue"
-							input type='text' name="description" value="#{@description[:description]}"
-							input type='submit' value="#{L[:update]}"
+						p.name = @box[:name]
+						p.des = @box[:description]
 
-	.top_menu
-		a href="#{_url('/info/shop/new')}"
-			input.button type="button" value="#{L[:create]}"
+	.products
+		- unless @res.empty?
+			- @res.each do | row |
+				.product
+					.picture : img src="#{_file(row[:picture])}" 
+					.name.text-overflow
+						= row[:name]
+					.des.text-overflow
+						= row[:description]
+		- else
+			p = L[:'No results found']
 
-	form.form action="#{request.path}" method="post" enctype="multipart/form-data"
-		.top_menu
-			input.done type="submit" value="#{L[:done]}"
-			a href="#{_url('/info/user/' + _user[:uid].to_s)}"
-				input.done type="button" value="#{L[:return]}"
+		.clear
 
-		.desciption
-			p : h2 = L[:'public product']
-			p : label = L[:picture]
-			p : input.text type="file" name="picture"
-			p : label = L[:description]
-			p : input.text type="text" name="description" required="required" placeholder="150 x 150 px" = @fields[:description]
+		- if @page_count > 1
+			p.page_bar
+				- for i in 1..@page_count
+					- page_focus = i == @page_curr ? "page_focus" : ""
+					a class="#{page_focus}" href="#{_url2(request.path, :page_curr => i)}" = i
 
-link rel='stylesheet' type='text/css' href='#{_assets("/info/css/shop.css")}'
+link rel='stylesheet' type='text/css' href='#{_assets("/info/css/product_view.css")}'
+
+javascript:
+
+	$('#product_view .product').hover(function(){
+		$(this).css('background', '#86B1B1');
+		$(this).find('.hide').show();
+	}, function(){
+		$(this).css('background', '');
+		$(this).find('.hide').hide();
+	});
+	$('#product_view .box').hover(function(){
+		$(this).find('.hide').show();
+	}, function(){
+		$(this).find('.hide').hide();
+	});
+
+	$('#product_view .product').click(function(){
+		$("#wrap").before("<div class='show_box'><div class='show_box_bg'/><img class='show_box_panel'src='" + $(this).find('img').attr('src') + "' /></div>");
+
+		$('.show_box').css('position', 'absolute');
+		$('.show_box').css('z-index', 1);
+
+		$('.show_box_bg').css('padding', "10px");
+		$('.show_box_bg').css('width', $("body").width());
+		$('.show_box_bg').css('height', $("body").height());
+		$('.show_box_bg').css('background-color', '#E3EEEB');
+		$('.show_box_bg').css('filter', 'alpha(opacity=70)');
+		$('.show_box_bg').css('-moz-opacity', '0.7');
+		$('.show_box_bg').css('opacity', '0.7');
+
+		$('.show_box_panel').css('padding', '5px');
+		$('.show_box_panel').css('background-color', 'white');
+		$('.show_box_panel').css('position', 'absolute');
+		$('.show_box_panel').css('margin', '0 auto');
+
+		var top = ($("body").height() / 2) - ($('.show_box').find('img').height() / 2);
+		var left = ($("body").width() / 2) - ($('.show_box').find('img').width() / 2);
+		
+		$('.show_box_panel').css('top', top);
+		$('.show_box_panel').css('left', left);
+
+		$(".show_box").click(function(){
+			$(this).remove();
+		})
+	});
+
+

@@ -1,0 +1,92 @@
+
+/** for all **/
+#product_edit a {
+	color: #000;
+	text-decoration: none;
+}
+#product_edit .top_menu, #product_edit .box, #product_edit .form, #product_edit .products, #product_edit p {
+	margin-bottom: 10px;
+}
+#product_edit .top_menu .button {
+	width: 100px;
+}
+#product_edit h2 {
+	background-color: #E3EEEB;
+	padding: 1px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+
+/** product box **/
+#product_edit .box {
+	padding: 5px;
+}
+#product_edit .box td {
+	width: 30%;
+	padding: 0 10px 10px 0;
+}
+#product_edit .box img {
+	width: 122px;
+	height: 122px;
+}
+#product_edit .box .name {
+	font-size: 25px;
+	text-align: center;
+	font-weight: 900;
+}
+#product_edit .box .des {
+	font-size: 20px;
+	text-align: center;
+}
+
+/** products **/
+#product_edit .products {
+	padding: 1px;
+}
+#product_edit .product {
+	float: left;
+	width: 122px;
+	height: 133px;
+	padding: 7px;
+	margin: 0 10px 20px 0;
+}
+#product_edit .product .picture img {
+	width: 122px;
+	height: 124px;
+}
+#product_edit .product .name {
+	font-size: 13px;
+	font-weight: 900;
+}
+#product_edit .product .des {
+	font-size: 13px;
+}
+#product_edit .product a {
+	font-size: 12px;
+	position: relative;
+	float: right;
+}
+
+/** product edit form **/
+#product_edit .text{
+	width: 300px;
+	height: 20px;
+	border: 1px solid #8AB6AA;
+}
+#product_edit .done {
+	width: 100px;
+}
+
+/** product_edit page bar **/
+#product_edit .page_bar {
+	margin-top: 20px;
+}
+#product_edit .page_bar a {
+	padding: 5px;
+	margin: 5px;
+}
+#product_edit .page_focus {
+	background-color: #86B1B1;
+}
+

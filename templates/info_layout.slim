@@ -17,13 +17,13 @@ html
 						h1 = _var(:website_logo, :info)
 
 				#search
-					form action="#{_url('/info/shop')}" method="get"
+					form action="#{_url('/info/product/s')}" method="get"
 						input.text type="text" name="sc" id="search_text"
 						input.done type="submit" value="#{L[:search]}"
 
 					.user_center
 						- if _user[:uid] > 0
-							a href="#{_url('/info/user/' + _user[:uid].to_s)}" = _user[:name]
+							a href="#{_url('/info/user')}" = _user[:name]
 							label  , 
 							a href="#{_path_of_logout}" = L[:'logout']
 						- else

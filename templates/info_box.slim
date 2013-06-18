@@ -4,7 +4,7 @@
 	.box_panel.clear
 		- @boxs.each do | i |
 			- if @res.include? i
-				- link = @res[i][:link] == '' ? _url("/info/shop/view/#{@res[i][:uid]}") : @res[i][:link]
+				- link = @res[i][:link] == '' ? _url("/info/product/view/#{@res[i][:uid]}") : @res[i][:link]
 				a href="#{link}" target="_blank"
 					.box description="#{@res[i][:description]}"
 						- if @res[i][:picture] == ''
