@@ -25,7 +25,7 @@ html
 						- if _user[:uid] > 0
 							a href="#{_url('/info/user')}" = _user[:name]
 							label  , 
-							a href="#{_path_of_logout}" = L[:'logout']
+							a href="#{_url('/_logout')}" = L[:'logout']
 						- else
 							#user_login2
 								form action="#{_url2('/_login')}" method="post"
@@ -34,13 +34,14 @@ html
 									input.button type="submit" value="#{L[:enter]}"
 
 									- if _var(:allow_register, :user) == 'yes'
-										a href="#{_url(@_path_of_login, :userstate => 'new')}"
+										a href="#{_url(@_path[:login], :userstate => 'new')}"
 											input.button type="button" value="#{L[:register]}"
 
 
 				#menu
 					- @top_menu.each do | k, v |
-						a href="#{_url(v)}" = L[k.to_sym]
+						- focus = _match_path(request.path, @top_menu.values) == v ? "focus" : ''
+						a class="#{focus}" href="#{_url(v)}" = L[k.to_sym]
 
 			== _inc(:_message)
 

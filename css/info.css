@@ -25,6 +25,9 @@
 #header #menu {
 	margin-top: 8px;
 }
+#header #menu .focus {
+	background-color: #20A8E7;
+}
 #header #search {
 	margin-top: 7px;
 }
@@ -36,8 +39,7 @@
 
 #header #menu a {
 	font-size: 23px;
-	margin: 10px;
-	padding: 5px;
+	padding: 3px 15px;
 }
 
 #header #search .text {

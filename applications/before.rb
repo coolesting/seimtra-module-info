@@ -10,13 +10,18 @@ before '/info/*' do
 	@description	= _var(:website_description, :info)
 	@footer			= _var(:website_footer, :info)
 
-	@_path_of_login = '/info/login'
+	@_path[:login]	= '/info/login'
 
 	#@menu = DB[:_menu].filter(:type => 'info').all
 	#@top_menu = DB[:info_type].all
 	@top_menu = {
-		#:home 	=> '/info/box',
-		#:forum => '/info/forum',
+		:home 	=> '/info/box',
+		:forum 	=> '/info/forum',
+	}
+
+	@menu_edit = {
+		:shop			=>	'/info/user/shop',
+		:product		=>	'/info/user/product',
 	}
 
 end
